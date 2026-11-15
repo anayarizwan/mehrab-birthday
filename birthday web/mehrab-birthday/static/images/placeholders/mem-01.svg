@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFE3F2" />
+      <stop offset="100%" stop-color="#E8DCFF" />
+    </linearGradient>
+    <radialGradient id="g1_glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g1)" />
+  <rect width="100%" height="100%" fill="url(#g1_glow)" />
+  <path d="M 174 278 Q 175.44 284.56 182 286 Q 175.44 287.44 174 294 Q 172.56 287.44 166 286 Q 172.56 284.56 174 278 Z" fill="#FFB6D5" opacity="0.7" /><path d="M 123 348 Q 124.26 353.74 130 355 Q 124.26 356.26 123 362 Q 121.74 356.26 116 355 Q 121.74 353.74 123 348 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 47 435 Q 48.08 439.92 53 441 Q 48.08 442.08 47 447 Q 45.92 442.08 41 441 Q 45.92 439.92 47 435 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 125 143 Q 125.9 147.1 130 148 Q 125.9 148.9 125 153 Q 124.1 148.9 120 148 Q 124.1 147.1 125 143 Z" fill="#FFD9A8" opacity="0.7" /><path d="M 480 437 Q 480.72 440.28 484 441 Q 480.72 441.72 480 445 Q 479.28 441.72 476 441 Q 479.28 440.28 480 437 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 344 358 Q 344.9 362.1 349 363 Q 344.9 363.9 344 368 Q 343.1 363.9 339 363 Q 343.1 362.1 344 358 Z" fill="#FFD9A8" opacity="0.7" /><path d="M 114 544 Q 115.08 548.92 120 550 Q 115.08 551.08 114 556 Q 112.92 551.08 108 550 Q 112.92 548.92 114 544 Z" fill="#FFD9A8" opacity="0.7" /><path d="M 103 224 Q 104.26 229.74 110 231 Q 104.26 232.26 103 238 Q 101.74 232.26 96 231 Q 101.74 229.74 103 224 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 55 223 Q 55.54 225.46 58 226 Q 55.54 226.54 55 229 Q 54.46 226.54 52 226 Q 54.46 225.46 55 223 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 214 271 Q 215.44 277.56 222 279 Q 215.44 280.44 214 287 Q 212.56 280.44 206 279 Q 212.56 277.56 214 271 Z" fill="#FFD9A8" opacity="0.7" /><path d="M 332 278 Q 332.72 281.28 336 282 Q 332.72 282.72 332 286 Q 331.28 282.72 328 282 Q 331.28 281.28 332 278 Z" fill="#FFB6D5" opacity="0.7" /><path d="M 140 38 Q 140.9 42.1 145 43 Q 140.9 43.9 140 48 Q 139.1 43.9 135 43 Q 139.1 42.1 140 38 Z" fill="#FFB6D5" opacity="0.7" /><path d="M 259 237 Q 260.26 242.74 266 244 Q 260.26 245.26 259 251 Q 257.74 245.26 252 244 Q 257.74 242.74 259 237 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 77 25 Q 78.44 31.56 85 33 Q 78.44 34.44 77 41 Q 75.56 34.44 69 33 Q 75.56 31.56 77 25 Z" fill="#FFB6D5" opacity="0.7" />
+  <path d="M 300.0 319.75 C 265.0 297.0, 258.0 279.5, 282.5 272.5 C 293.0 269.0, 300.0 279.5, 300.0 288.25 C 300.0 279.5, 307.0 269.0, 317.5 272.5 C 342.0 279.5, 335.0 297.0, 300.0 319.75 Z" fill="#FFFFFF" opacity="0.85" />
+  <text x="50%" y="62%" text-anchor="middle"
+        font-family="Dancing Script, cursive" font-size="42"
+        fill="#FFFFFF" opacity="0.92" style="font-weight:700">💗</text>
+  <text x="50%" y="86%" text-anchor="middle"
+        font-family="Poppins, sans-serif" font-size="27"
+        fill="#FFFFFF" opacity="0.95" letter-spacing="1.5"
+        style="text-transform:uppercase;font-weight:600">your photo here</text>
+</svg>

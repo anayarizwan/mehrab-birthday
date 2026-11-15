@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="g101" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD9A8" />
+      <stop offset="100%" stop-color="#FFB6D5" />
+    </linearGradient>
+    <radialGradient id="g101_glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g101)" />
+  <rect width="100%" height="100%" fill="url(#g101_glow)" />
+  <path d="M 169 91 Q 170.26 96.74 176 98 Q 170.26 99.26 169 105 Q 167.74 99.26 162 98 Q 167.74 96.74 169 91 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 732 372 Q 733.08 376.92 738 378 Q 733.08 379.08 732 384 Q 730.92 379.08 726 378 Q 730.92 376.92 732 372 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 750 115 Q 750.54 117.46 753 118 Q 750.54 118.54 750 121 Q 749.46 118.54 747 118 Q 749.46 117.46 750 115 Z" fill="#FFB6D5" opacity="0.7" /><path d="M 77 393 Q 78.08 397.92 83 399 Q 78.08 400.08 77 405 Q 75.92 400.08 71 399 Q 75.92 397.92 77 393 Z" fill="#FFB6D5" opacity="0.7" /><path d="M 67 211 Q 68.08 215.92 73 217 Q 68.08 218.08 67 223 Q 65.92 218.08 61 217 Q 65.92 215.92 67 211 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 199 419 Q 199.54 421.46 202 422 Q 199.54 422.54 199 425 Q 198.46 422.54 196 422 Q 198.46 421.46 199 419 Z" fill="#FFD9A8" opacity="0.7" /><path d="M 769 392 Q 770.08 396.92 775 398 Q 770.08 399.08 769 404 Q 767.92 399.08 763 398 Q 767.92 396.92 769 392 Z" fill="#FFB6D5" opacity="0.7" /><path d="M 611 216 Q 612.08 220.92 617 222 Q 612.08 223.08 611 228 Q 609.92 223.08 605 222 Q 609.92 220.92 611 216 Z" fill="#FFD9A8" opacity="0.7" /><path d="M 720 222 Q 720.9 226.1 725 227 Q 720.9 227.9 720 232 Q 719.1 227.9 715 227 Q 719.1 226.1 720 222 Z" fill="#FFB6D5" opacity="0.7" /><path d="M 446 50 Q 446.9 54.1 451 55 Q 446.9 55.9 446 60 Q 445.1 55.9 441 55 Q 445.1 54.1 446 50 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 303 22 Q 304.08 26.92 309 28 Q 304.08 29.08 303 34 Q 301.92 29.08 297 28 Q 301.92 26.92 303 22 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 224 302 Q 224.54 304.46 227 305 Q 224.54 305.54 224 308 Q 223.46 305.54 221 305 Q 223.46 304.46 224 302 Z" fill="#FFB6D5" opacity="0.7" /><path d="M 158 249 Q 158.72 252.28 162 253 Q 158.72 253.72 158 257 Q 157.28 253.72 154 253 Q 157.28 252.28 158 249 Z" fill="#FFFFFF" opacity="0.7" /><path d="M 507 299 Q 507.72 302.28 511 303 Q 507.72 303.72 507 307 Q 506.28 303.72 503 303 Q 506.28 302.28 507 299 Z" fill="#FFFFFF" opacity="0.7" />
+  <path d="M 400.0 244.75 C 365.0 222.0, 358.0 204.5, 382.5 197.5 C 393.0 194.0, 400.0 204.5, 400.0 213.25 C 400.0 204.5, 407.0 194.0, 417.5 197.5 C 442.0 204.5, 435.0 222.0, 400.0 244.75 Z" fill="#FFFFFF" opacity="0.85" />
+  <text x="50%" y="62%" text-anchor="middle"
+        font-family="Dancing Script, cursive" font-size="31"
+        fill="#FFFFFF" opacity="0.92" style="font-weight:700">⭐</text>
+  <text x="50%" y="86%" text-anchor="middle"
+        font-family="Poppins, sans-serif" font-size="20"
+        fill="#FFFFFF" opacity="0.95" letter-spacing="1.5"
+        style="text-transform:uppercase;font-weight:600">where it began</text>
+</svg>

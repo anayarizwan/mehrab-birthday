@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Happy Birthday, Mehrab! | Mehrab ♥</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" />
+</head>
+<body>
+
+  <!-- ===== Loading overlay ===== -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-heart"><i data-lucide="heart"></i></div>
+      <p class="loader-text">Sprinkling a little magic...</p>
+      <div class="loader-bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ===== Global particle / effects canvas ===== -->
+  <canvas id="fxCanvas" class="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===== Floating decorations ===== -->
+  <div class="global-decor" aria-hidden="true">
+    <span class="float-heart" style="--x:8vw; --d:0s; --dur:18s;">💗</span>
+    <span class="float-heart" style="--x:24vw; --d:3s; --dur:22s; --emoji:✨;">✨</span>
+    <span class="float-heart" style="--x:46vw; --d:1s; --dur:20s;">💗</span>
+    <span class="float-heart" style="--x:62vw; --d:5s; --dur:24s; --emoji:⭐;">⭐</span>
+    <span class="float-heart" style="--x:78vw; --d:2s; --dur:19s;">💗</span>
+    <span class="float-heart" style="--x:92vw; --d:4s; --dur:23s; --emoji:✨;">✨</span>
+  </div>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <div class="nav-inner glass">
+      <a href="#hero" class="nav-brand">
+        <span class="nav-brand-icon"><i data-lucide="sparkles"></i></span>
+        <span class="nav-brand-text">Mehrab <span class="script">♥</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#cake" class="nav-link">Birthday</a>
+        <a href="#memories" class="nav-link">Memories</a>
+        <a href="#story" class="nav-link">Our Story</a>
+        <a href="#reasons" class="nav-link">Reasons</a>
+        <a href="#funny" class="nav-link">Funny</a>
+        <a href="#letter" class="nav-link">Letter</a>
+        <a href="#surprise" class="nav-link">Surprise</a>
+        <a href="{{ url_for('logout') }}" class="nav-link nav-logout" title="Log out"><i data-lucide="log-out"></i></a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Full vocal Happy Birthday recording. Playback begins after the first user gesture. -->
+  <audio id="birthdayAudio" preload="auto" loop>
+    <source src="{{ url_for('static', filename='audio/happy-birthday.wav') }}" type="audio/wav">
+  </audio>
+
+  <!-- ===== Music player ===== -->
+  <div class="music-player glass" id="musicPlayer" role="region" aria-label="Background music">
+    <button class="music-btn" id="musicToggle" aria-label="Play music">
+      <i data-lucide="play"></i>
+    </button>
+    <div class="music-info">
+      <span class="music-title" id="musicTitle">Tap to play Happy Birthday</span>
+      <div class="music-bars" id="musicBars" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="music-volume" id="musicVolumeWrap">
+      <i data-lucide="volume-2" class="vol-icon"></i>
+      <input type="range" id="musicVolume" min="0" max="100" value="60" aria-label="Volume" />
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="section hero" id="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-aurora"></div>
+        <div class="hero-stars" id="heroStars"></div>
+        <div class="butterflies" id="butterflies" aria-hidden="true"></div>
+        <div class="hero-balloons" aria-hidden="true">
+          <span class="birthday-balloon balloon-one">♥</span>
+          <span class="birthday-balloon balloon-two">♥</span>
+          <span class="birthday-balloon balloon-three">♥</span>
+          <span class="birthday-balloon balloon-four">♥</span>
+          <span class="birthday-balloon balloon-five">♥</span>
+          <span class="birthday-balloon balloon-six">♥</span>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow reveal"><i data-lucide="sparkles"></i> A whole little world, made just for you</p>
+        <h1 class="hero-title reveal">
+          <span class="hero-line-1">Happy Birthday,</span>
+          <span class="hero-name script">Mehrab!</span>
+          <span class="hero-heart">💗</span>
+        </h1>
+        <p class="hero-subtitle reveal">
+          A little world for the girl who became my unexpected blessing, my safest place, and my forever favourite.
+        </p>
+
+        <div class="hero-gift" id="heroGift" role="button" tabindex="0" aria-label="Open your little surprise">
+          <div class="giftbox">
+            <div class="giftbox-lid"></div>
+            <div class="giftbox-body"></div>
+            <div class="giftbox-ribbon-v"></div>
+            <div class="giftbox-ribbon-h"></div>
+            <div class="giftbox-bow"></div>
+            <div class="giftbox-glow"></div>
+          </div>
+        </div>
+
+        <a href="#cake" class="cta-btn" id="openSurpriseBtn">
+          <span>OPEN YOUR LITTLE SURPRISE</span>
+          <i data-lucide="gift"></i>
+          <span class="cta-shine"></span>
+        </a>
+
+        <div class="hero-scroll-hint" aria-hidden="true">
+          <span>scroll</span>
+          <span class="scroll-arrow"><i data-lucide="chevron-down"></i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CAKE ===================== -->
+    <section class="section cake-section" id="cake">
+      <div class="section-head reveal">
+        <p class="eyebrow">Make a wish</p>
+        <h2 class="section-title">Your Little Birthday Cake <span class="emoji">🎂</span></h2>
+        <p class="section-sub">Tap the candles, then close your eyes and wish for something beautiful.</p>
+      </div>
+
+      <div class="cake-stage reveal">
+        <div class="cake-scene">
+          <div class="cake-plate"></div>
+          <div class="cake">
+            <div class="cake-layer cake-layer-3"></div>
+            <div class="cake-layer cake-layer-2"></div>
+            <div class="cake-layer cake-layer-1"></div>
+            <div class="cake-drip"></div>
+            <div class="cake-sprinkles" aria-hidden="true"></div>
+            <div class="cake-candles" id="cakeCandles">
+              <div class="candle" data-candle="1">
+                <div class="candle-flame"></div>
+                <div class="candle-wick"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle" data-candle="2">
+                <div class="candle-flame"></div>
+                <div class="candle-wick"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle" data-candle="3">
+                <div class="candle-flame"></div>
+                <div class="candle-wick"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle" data-candle="4">
+                <div class="candle-flame"></div>
+                <div class="candle-wick"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle" data-candle="5">
+                <div class="candle-flame"></div>
+                <div class="candle-wick"></div>
+                <div class="candle-stick"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="wish-btn" id="wishBtn">
+          <i data-lucide="sparkles"></i>
+          <span>Make A Wish</span>
+        </button>
+
+        <p class="cake-msg" id="cakeMsg" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ===================== MEMORIES ===================== -->
+    <section class="section memories-section" id="memories">
+      <div class="section-head reveal">
+        <p class="eyebrow">Captured moments</p>
+        <h2 class="section-title">Little Moments, Big Memories <span class="emoji">💗</span></h2>
+        <p class="section-sub">A little scrapbook of the moments I wish we could live twice.</p>
+      </div>
+
+      <div class="scrapbook" id="scrapbook">
+        <!-- Cards injected by gallery.js from content.js -->
+      </div>
+    </section>
+
+    <!-- ===================== OUR STORY / TIMELINE ===================== -->
+    <section class="section story-section" id="story">
+      <div class="section-head reveal">
+        <p class="eyebrow">Our journey</p>
+        <h2 class="section-title">From Little Moments To Memories</h2>
+        <p class="section-sub">An unexpected friendship that became one of my favourite parts of life.</p>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <!-- Items injected by main.js from content.js -->
+      </div>
+    </section>
+
+    <!-- ===================== 10 REASONS ===================== -->
+    <section class="section reasons-section" id="reasons">
+      <div class="section-head reveal">
+        <p class="eyebrow">Just for you</p>
+        <h2 class="section-title">10 Little Reasons Why You're So Special <span class="emoji">💕</span></h2>
+        <p class="section-sub">Tap each card to reveal a little reason.</p>
+      </div>
+
+      <div class="reasons-grid" id="reasonsGrid">
+        <!-- Cards injected by main.js from content.js -->
+      </div>
+    </section>
+
+    <!-- ===================== FUNNY ===================== -->
+    <section class="section funny-section" id="funny">
+      <div class="section-head reveal">
+        <p class="eyebrow">Inside jokes</p>
+        <h2 class="section-title">Things Only We Understand <span class="emoji">😂</span></h2>
+        <p class="section-sub">Our jokes, our roasts, our reels — nobody else needs to understand.</p>
+      </div>
+
+      <div class="funny-grid" id="funnyGrid">
+        <!-- Cards injected by main.js from content.js -->
+      </div>
+    </section>
+
+    <!-- ===================== LETTER ===================== -->
+    <section class="section letter-section" id="letter">
+      <div class="section-head reveal">
+        <p class="eyebrow">From the heart</p>
+        <h2 class="section-title">A Little Letter For You <span class="emoji">💌</span></h2>
+        <p class="section-sub">A few things I never want you to forget. Tap to open.</p>
+      </div>
+
+      <div class="letter-stage reveal">
+        <!-- Closed envelope -->
+        <div class="letter-envelope" id="letterEnvelope" role="button" tabindex="0" aria-label="Open the letter">
+          <div class="le-body">
+            <div class="le-heart"><i data-lucide="heart"></i></div>
+            <p class="le-label">For Mehrab</p>
+            <p class="le-sub">Tap to open</p>
+          </div>
+          <div class="le-flap"></div>
+          <div class="le-glow"></div>
+        </div>
+
+        <!-- Letter paper (revealed) -->
+        <div class="letter-paper" id="letterPaper" aria-hidden="true">
+          <div class="letter-paper-inner">
+            <p class="letter-greeting" id="letterGreeting"></p>
+            <div class="letter-body" id="letterBody"></div>
+            <p class="letter-signature script" id="letterSignature"></p>
+          </div>
+          <button class="letter-close" id="letterClose" aria-label="Close letter">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SURPRISE ===================== -->
+    <section class="section surprise-section" id="surprise">
+      <div class="surprise-bg" aria-hidden="true"></div>
+      <div class="section-head reveal">
+        <p class="eyebrow">One last thing</p>
+        <h2 class="section-title">One Last Thing, Mehrab...</h2>
+        <p class="section-sub">There's one more surprise waiting for you. Tap the gift.</p>
+      </div>
+
+      <div class="surprise-stage reveal">
+        <div class="final-gift" id="finalGift" role="button" tabindex="0" aria-label="Open your final surprise">
+          <div class="fg-giftbox">
+            <div class="fg-lid"></div>
+            <div class="fg-body"></div>
+            <div class="fg-ribbon-v"></div>
+            <div class="fg-ribbon-h"></div>
+            <div class="fg-bow"></div>
+            <div class="fg-glow"></div>
+          </div>
+        </div>
+
+        <div class="final-message" id="finalMessage" aria-hidden="true">
+          <div class="final-message-inner glass">
+            <p id="finalMessageText"></p>
+            <p class="final-glow-text script" id="finalGlowText">My Lakshmi, Always 💗</p>
+            <button class="replay-btn" id="replayBtn"><i data-lucide="rotate-cw"></i> Watch it again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="footer-text">Made with <i data-lucide="heart" class="mini-heart"></i> just for you, Mehrab.</p>
+      <p class="footer-sub">Designed by Anaya ♥</p>
+    </footer>
+  </main>
+
+  <!-- ===== Back to top ===== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- ===== Scripts ===== -->
+  <!-- Content first so other scripts can use it -->
+  <script src="{{ url_for('static', filename='js/content.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.lucide) window.lucide.createIcons();
+      if (window.MehrabUniverse && window.MehrabUniverse.init) {
+        window.MehrabUniverse.init();
+      }
+    });
+  </script>
+</body>
+</html>

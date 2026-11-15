@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+*.key
+
+# Flask instance folder
+instance/
+.webassets-cache
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# --------------------------------------------------------------- #
+# IMPORTANT: never commit personal photos.                         #
+# The private_uploads/ folder holds real friendship photographs   #
+# and must stay on the server only.                                #
+# --------------------------------------------------------------- #
+private_uploads/*
+!private_uploads/.gitkeep
+
+# Real audio files (keep the README, ignore actual mp3s)
+static/audio/*
+!static/audio/README.txt
+!static/audio/.gitkeep

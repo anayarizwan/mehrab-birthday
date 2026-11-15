@@ -1,0 +1,136 @@
+/* =============================================================== *
+ * Mehrab's Little Universe - animation utilities                  *
+ *                                                                  *
+ * Extra keyframes + classes used across the site. The base        *
+ * keyframes (floatBob, glowPulse, twinkle, flameFlicker, etc.)     *
+ * live in style.css. This file holds more advanced decorative      *
+ * animations and entrance effects.                                *
+ * =============================================================== */
+
+/* Butterflies in the hero */
+.butterfly {
+  position: absolute;
+  width: 36px; height: 28px;
+  pointer-events: none;
+  opacity: 0;
+  animation: butterflyFly var(--bf-dur, 18s) linear infinite;
+  animation-delay: var(--bf-delay, 0s);
+}
+.butterfly .wing {
+  position: absolute; top: 0; width: 18px; height: 28px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  border-radius: 50% 50% 30% 30%;
+  box-shadow: 0 4px 8px rgba(167, 139, 250, 0.25);
+  animation: wingFlap 0.25s ease-in-out infinite alternate;
+}
+.butterfly .wing.left  { left: 0;  transform-origin: right center; }
+.butterfly .wing.right { right: 0; transform-origin: left center;  animation-delay: 0s; }
+.butterfly .body {
+  position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
+  width: 4px; height: 22px; background: var(--deep-purple); border-radius: 2px;
+}
+@keyframes wingFlap {
+  0%   { transform: rotateY(0deg) scaleX(1); }
+  100% { transform: rotateY(70deg) scaleX(0.6); }
+}
+@keyframes butterflyFly {
+  0%   { transform: translate(0, 0) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.9; }
+  25%  { transform: translate(20vw, -10vh) rotate(10deg);  opacity: 0.9; }
+  50%  { transform: translate(45vw, 5vh)  rotate(-5deg);  opacity: 0.85; }
+  75%  { transform: translate(70vw, -8vh) rotate(15deg);  opacity: 0.9; }
+  100% { transform: translate(110vw, 0)   rotate(0deg);   opacity: 0; }
+}
+
+/* Global floating hearts decoration */
+.global-decor { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+.float-heart {
+  position: absolute; bottom: -40px; left: var(--x, 10vw);
+  font-size: 18px; opacity: 0;
+  animation: floatHeartUp var(--dur, 20s) linear infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes floatHeartUp {
+  0%   { transform: translateY(0) translateX(0) rotate(0);     opacity: 0; }
+  8%   { opacity: 0.7; }
+  50%  { transform: translateY(-50vh) translateX(20px) rotate(8deg);  opacity: 0.6; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-110vh) translateX(-20px) rotate(-8deg); opacity: 0; }
+}
+
+/* Confetti pieces (created on demand by JS) */
+.confetti-piece {
+  position: fixed; top: -20px; z-index: 1400;
+  width: 10px; height: 14px; pointer-events: none;
+  border-radius: 2px;
+  animation: confettiFall var(--cd-dur, 4s) linear forwards;
+}
+@keyframes confettiFall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.6; }
+}
+
+/* Firework particles (canvas-driven, but we also have a CSS fallback class) */
+.firework {
+  position: fixed; pointer-events: none; z-index: 1450;
+  width: 0; height: 0;
+}
+.firework-particle {
+  position: absolute; width: 6px; height: 6px;
+  border-radius: 50%;
+  animation: fireworkBurst 1s ease-out forwards;
+}
+@keyframes fireworkBurst {
+  0%   { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--fx, 0), var(--fy, 0)) scale(0.2); opacity: 0; }
+}
+
+/* Entrance effects for sections */
+.fade-up { animation: fadeUp 0.9s var(--ease) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+
+.fade-in { animation: fadeIn 1s var(--ease) both; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.zoom-in { animation: zoomIn 0.7s var(--ease) both; }
+@keyframes zoomIn { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: none; } }
+
+.slide-left { animation: slideLeft 0.9s var(--ease) both; }
+@keyframes slideLeft { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: none; } }
+
+.slide-right { animation: slideRight 0.9s var(--ease) both; }
+@keyframes slideRight { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: none; } }
+
+/* Pulse / pop */
+.pulse-soft { animation: pulseSoft 2s ease-in-out infinite; }
+@keyframes pulseSoft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.pop-in { animation: popIn 0.6s var(--ease) both; }
+@keyframes popIn {
+  0%   { transform: scale(0); opacity: 0; }
+  70%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Stagger helpers (use with reveal class + JS) */
+.reveal.is-visible.stagger-1 { transition-delay: 0.05s; }
+.reveal.is-visible.stagger-2 { transition-delay: 0.15s; }
+.reveal.is-visible.stagger-3 { transition-delay: 0.25s; }
+.reveal.is-visible.stagger-4 { transition-delay: 0.35s; }
+.reveal.is-visible.stagger-5 { transition-delay: 0.45s; }
+.reveal.is-visible.stagger-6 { transition-delay: 0.55s; }
+
+/* Letter typing animation support */
+.letter-body p.typing { min-height: 1.4em; }
+
+/* Gift box lid lift on hero hover (subtle) */
+.hero-gift:hover .giftbox-lid { transform: translateX(-50%) translateY(-4px) rotate(-2deg); transition: transform 0.4s var(--ease); }
+
+/* Floating bob for icons */
+.float-icon { animation: floatBob 3s ease-in-out infinite; }
+
+/* Music equalizer bars (when paused) */
+.music-bars.paused span { animation-play-state: paused !important; opacity: 0.3; }

@@ -1,0 +1,6 @@
+# Mehrab's Little Universe - Python dependencies
+# Install with:  pip install -r requirements.txt
+
+Flask==3.0.3
+Werkzeug==3.0.3
+python-dotenv==1.0.1

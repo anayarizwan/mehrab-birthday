@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>A Little Surprise... | Mehrab ♥</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}" />
+</head>
+<body class="login-page">
+
+  <!-- ===== Animated background layers ===== -->
+  <div class="login-bg" aria-hidden="true">
+    <div class="bg-gradient-aurora"></div>
+    <!-- Stars are injected by JS -->
+    <div class="stars-layer" id="starsLayer"></div>
+    <!-- Floating hearts -->
+    <div class="hearts-layer" id="heartsLayer"></div>
+    <!-- Soft orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ===== Login card ===== -->
+  <main class="login-shell">
+    <div class="login-card glass" id="loginCard">
+      <!-- Glowing envelope illustration -->
+      <div class="envelope-wrap" aria-hidden="true">
+        <div class="envelope">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <div class="envelope-heart"></div>
+          </div>
+          <div class="envelope-glow"></div>
+        </div>
+      </div>
+
+      <p class="login-eyebrow">A Little Surprise For Someone Special...</p>
+      <h1 class="login-title">Welcome to<br /><span class="script">Mehrab ♥</span></h1>
+      <p class="login-subtitle">A little world made with all my love, just for you.</p>
+
+      {% if error %}
+      <div class="login-error" id="loginError" role="alert">
+        <i data-lucide="alert-circle"></i>
+        <span>{{ error_msg or "Oops! That's not the magic word. Try again, bestie." }}</span>
+      </div>
+      {% endif %}
+
+      <form class="login-form" method="POST" action="{{ url_for('login') }}" autocomplete="off" id="loginForm">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+        <label class="login-field" for="password">
+          <span class="field-icon"><i data-lucide="lock-keyhole"></i></span>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter the secret word..."
+            required
+            autocomplete="current-password"
+            aria-label="Password" />
+          <button type="button" class="toggle-password" id="togglePassword" aria-label="Show password">
+            <i data-lucide="eye"></i>
+          </button>
+        </label>
+
+        <button type="submit" class="unlock-btn" id="unlockBtn">
+          <span class="unlock-btn-text">Unlock The Surprise <i data-lucide="sparkles"></i></span>
+          <span class="unlock-btn-shine"></span>
+        </button>
+      </form>
+
+      <p class="login-hint">
+        A tiny surprise, made with a whole lot of love. 💗
+      </p>
+    </div>
+
+    <footer class="login-footer">
+      Made with <i data-lucide="heart" class="mini-heart"></i> just for Mehrab &middot; Private &amp; Password Protected
+    </footer>
+  </main>
+
+  <!-- ===== Scripts ===== -->
+  <script>
+    // Initialise Lucide icons as soon as the deferred script runs.
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.lucide) window.lucide.createIcons();
+    });
+  </script>
+  <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    // Login-page specific behaviour
+    (function () {
+      // Inject twinkling stars
+      const stars = document.getElementById('starsLayer');
+      if (stars) {
+        const count = window.innerWidth < 600 ? 60 : 120;
+        for (let i = 0; i < count; i++) {
+          const s = document.createElement('span');
+          s.className = 'star';
+          s.style.left = Math.random() * 100 + 'vw';
+          s.style.top = Math.random() * 100 + 'vh';
+          const size = (Math.random() * 2 + 1).toFixed(2);
+          s.style.width = size + 'px';
+          s.style.height = size + 'px';
+          s.style.animationDelay = (Math.random() * 4) + 's';
+          s.style.animationDuration = (Math.random() * 3 + 2) + 's';
+          stars.appendChild(s);
+        }
+      }
+      // Inject floating hearts
+      const hearts = document.getElementById('heartsLayer');
+      if (hearts && window.MehrabUniverse && window.MehrabUniverse.spawnHearts) {
+        window.MehrabUniverse.spawnHearts(hearts, 18);
+      }
+
+      // Show / hide password
+      const toggle = document.getElementById('togglePassword');
+      const pw = document.getElementById('password');
+      if (toggle && pw) {
+        toggle.addEventListener('click', function () {
+          const showing = pw.type === 'text';
+          pw.type = showing ? 'password' : 'text';
+          toggle.innerHTML = showing
+            ? '<i data-lucide="eye"></i>'
+            : '<i data-lucide="eye-off"></i>';
+          if (window.lucide) window.lucide.createIcons();
+          pw.focus();
+        });
+      }
+
+      // Shake the card on error
+      {% if error %}
+      window.addEventListener('load', function () {
+        const card = document.getElementById('loginCard');
+        if (card) {
+          card.classList.add('shake');
+          setTimeout(() => card.classList.remove('shake'), 600);
+        }
+      });
+      {% endif %}
+
+      // Submit animation
+      const form = document.getElementById('loginForm');
+      const btn = document.getElementById('unlockBtn');
+      if (form && btn) {
+        form.addEventListener('submit', function () {
+          btn.classList.add('is-loading');
+          btn.setAttribute('disabled', 'true');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

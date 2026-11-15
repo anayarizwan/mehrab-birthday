@@ -1,0 +1,197 @@
+/* =============================================================== *
+ * Mehrab's Little Universe - responsive overrides                  *
+ * Breakpoints:                                                     *
+ *   1180px  large laptop                                           *
+ *   980px   tablet landscape                                       *
+ *   768px   tablet portrait                                        *
+ *   600px   large phone                                            *
+ *   420px   small phone                                            *
+ * =============================================================== */
+
+/* ---------- Large laptop ---------- */
+@media (max-width: 1180px) {
+  .reasons-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* ---------- Tablet landscape ---------- */
+@media (max-width: 980px) {
+  :root { --nav-h: 64px; }
+  .section { padding: clamp(64px, 10vh, 100px) 22px; }
+
+  .scrapbook { grid-template-columns: repeat(3, 1fr); gap: 32px 24px; }
+  .reasons-grid { grid-template-columns: repeat(4, 1fr); }
+  .funny-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Tablet portrait ---------- */
+@media (max-width: 768px) {
+  /* Mobile navigation */
+  .nav-links {
+    position: fixed; top: 0; right: 0; height: 100vh; width: min(80vw, 320px);
+    flex-direction: column; align-items: stretch; justify-content: center;
+    gap: 8px;
+    background: rgba(255, 245, 251, 0.96);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(167, 139, 250, 0.2);
+    padding: 80px 22px 40px;
+    transform: translateX(100%);
+    transition: transform 0.4s var(--ease);
+    box-shadow: -20px 0 50px rgba(109, 40, 217, 0.15);
+    z-index: 999;
+  }
+  .nav-links.open { transform: none; }
+  .nav-link { padding: 14px 18px; font-size: 1.05rem; border-radius: 12px; }
+  .nav-link.active { box-shadow: 0 6px 14px rgba(167, 139, 250, 0.35); }
+  .nav-logout { align-self: flex-start; margin-top: 12px; }
+  .nav-toggle { display: flex; }
+
+  .nav.menu-open::after {
+    content: ''; position: fixed; inset: 0; z-index: 998;
+    background: rgba(73, 52, 84, 0.4); backdrop-filter: blur(2px);
+  }
+
+  /* Hero */
+  .hero-title { font-size: clamp(2.4rem, 9vw, 3.6rem); }
+  .hero-gift { width: 110px; height: 110px; }
+  .giftbox { width: 90px; height: 90px; }
+
+  /* Cake */
+  .cake-scene { width: 280px; height: 300px; transform: scale(0.9); }
+
+  /* Memories */
+  .scrapbook { grid-template-columns: repeat(2, 1fr); gap: 28px 22px; }
+  .polaroid { padding: 10px 10px 14px; }
+  .polaroid-cap { font-size: 1rem; }
+
+  /* Timeline becomes single column */
+  .timeline::before { left: 22px; }
+  .tl-item { width: 100%; left: 0 !important; padding: 0 0 36px 56px; text-align: left !important; }
+  .tl-item .tl-marker { left: 10px !important; right: auto !important; }
+
+  /* Reasons */
+  .reasons-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .reason-card { height: 160px; }
+
+  /* Funny */
+  .funny-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  /* Letter */
+  .letter-paper { padding: 30px 26px 36px; }
+  .letter-paper::before { left: 36px; }
+
+  /* Music player: compact */
+  .music-player { right: 14px; bottom: 14px; padding: 8px 12px 8px 8px; gap: 8px; }
+  .music-info { display: none; }
+  .music-volume { display: none; }
+  .music-player.expanded .music-info,
+  .music-player.expanded .music-volume { display: flex; }
+  .music-player.expanded .music-info { display: flex; }
+}
+
+/* ---------- Large phone ---------- */
+@media (max-width: 600px) {
+  :root { --nav-h: 60px; }
+  .section { padding: clamp(56px, 9vh, 88px) 18px; }
+  .section-head { margin-bottom: 36px; }
+  .section-title { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+
+  .hero { padding-top: calc(var(--nav-h) + 20px); }
+  .hero-content { padding: 30px 18px; }
+  .hero-eyebrow { font-size: 11px; padding: 8px 16px; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero-gift { width: 100px; height: 100px; margin-bottom: 26px; }
+  .giftbox { width: 84px; height: 84px; }
+  .giftbox-body { width: 80px; height: 64px; }
+  .giftbox-lid { width: 88px; height: 18px; }
+  .cta-btn { padding: 14px 28px; font-size: 0.9rem; }
+
+  .cake-scene { width: 260px; height: 280px; transform: scale(0.82); }
+  .cake-candles { gap: 14px; top: -50px; }
+  .wish-btn { padding: 12px 24px; font-size: 0.88rem; }
+
+  /* Memories: single column for premium feel */
+  .scrapbook { grid-template-columns: repeat(2, 1fr); gap: 22px 18px; }
+  .polaroid-cap { font-size: 0.95rem; }
+
+  /* Reasons: 2 columns */
+  .reasons-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .reason-card { height: 140px; }
+  .rc-front-num { font-size: 2rem; }
+  .rc-back-text { font-size: 0.92rem; }
+
+  /* Letter */
+  .letter-stage { min-height: 260px; padding: 0 8px; }
+  .letter-envelope { width: 280px; height: 180px; }
+  .letter-paper { padding: 24px 22px 28px; }
+  .letter-paper::before { left: 28px; }
+  .letter-greeting { font-size: 1.3rem; margin-bottom: 12px; }
+  .letter-body p { font-size: 0.92rem; line-height: 1.6; margin-bottom: 11px; }
+  .letter-signature { font-size: 1.2rem; margin-top: 6px; }
+
+  /* Surprise */
+  .final-gift { width: 170px; height: 170px; }
+  .fg-giftbox { width: 150px; height: 150px; }
+  #finalMessageText { font-size: 1.02rem; }
+  .final-glow-text { font-size: 1.7rem; }
+
+  /* Lightbox nav smaller */
+  .lightbox-close, .lightbox-nav { width: 40px; height: 40px; }
+  .lightbox-close svg, .lightbox-nav svg { width: 18px; height: 18px; }
+  .lightbox-close { top: 16px; right: 16px; }
+  .lightbox-prev { left: 14px; }
+  .lightbox-next { right: 14px; }
+
+  /* Login */
+  .login-card { padding: 36px 26px 30px; }
+  .login-title { font-size: 1.5rem; }
+
+  /* Back-to-top */
+  .back-to-top { right: 18px; bottom: 70px; width: 44px; height: 44px; }
+}
+
+/* ---------- Small phone ---------- */
+@media (max-width: 420px) {
+  .section { padding: 60px 14px; }
+  .section-title { font-size: 1.6rem; }
+  .hero-title { font-size: 2.2rem; }
+  .hero-name { font-size: 1.1em; }
+  .hero-subtitle { font-size: 0.95rem; }
+  .scrapbook { grid-template-columns: 1fr; gap: 22px; }
+  .reasons-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .reason-card { height: 128px; }
+  .rc-front-num { font-size: 1.8rem; }
+  .rc-back-text { font-size: 0.86rem; }
+  .cake-scene { transform: scale(0.75); }
+  .login-card { padding: 30px 22px 26px; }
+  .login-title { font-size: 1.35rem; }
+  .login-title .script { font-size: 1.4em; }
+  .final-glow-text { font-size: 1.5rem; }
+}
+
+/* ---------- Landscape phones (short height) ---------- */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero { min-height: auto; padding: calc(var(--nav-h) + 30px) 20px 60px; }
+  .hero-gift { margin-bottom: 22px; }
+  .hero-scroll-hint { display: none; }
+  .surprise-section { min-height: auto; padding: 80px 20px; }
+  .letter-stage { min-height: 380px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .loader { transition: none; }
+}
+
+/* ---------- Print (just in case someone tries!) ---------- */
+@media print {
+  .nav, .music-player, .back-to-top, .lightbox, .fx-canvas, .global-decor { display: none !important; }
+  .section { padding: 20px 0; page-break-inside: avoid; }
+  body { background: white; color: black; }
+}
